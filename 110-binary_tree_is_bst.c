@@ -2,7 +2,7 @@
 
 /**
  * isBST - compare node in order to check if a given.
- * @tree: pointer
+ * @tree: pointer to the root node of the tree to check
  * @min: min value
  * @max: max value
  * Return: 1 if success, 0 otherwise.
