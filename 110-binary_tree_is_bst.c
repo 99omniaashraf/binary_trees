@@ -1,29 +1,37 @@
 #include "binary_trees.h"
-#include <limits.h>
+
 /**
- * binary_tree_check - check if is binary tree with int min max
- * @node: pointer to the tree
- * @min: the min
- * @max: max
- * Return: 1 or 0
- */
-int binary_tree_check(const binary_tree_t *node, int min, int max)
-{
-if (node == NULL)
-return (1);
-if (node->n < min || node->n > max)
-return (0);
-return (binary_tree_check(node->left, min, node->n - 1) &&
-binary_tree_check(node->right, node->n + 1, max));
-}
-/**
- * binary_tree_is_bst - binary tree is a valid Binary Search Tree
- * @tree: pointer to the tree
- * Return: 1 or 0
+ * binary_tree_is_bst - checks if a binary tree is a valid Binary Search Tree
+ * @tree: a pointer to the root node of the tree to check
+ *
+ * Return: 1 if tree is a valid BST
+ *         0 otherwise
  */
 int binary_tree_is_bst(const binary_tree_t *tree)
 {
-if (tree == NULL)
-return (0);
-return (binary_tree_check(tree, INT_MIN, INT_MAX));
+	if (!tree)
+		return (0);
+	return (btib_helper(tree, INT_MIN, INT_MAX));
+}
+
+/**
+ * btib_helper - checks if a binary tree is a valid Binary Search Tree
+ * @tree: a pointer to the root node of the tree to check
+ * @min: Lower bound of checked nored
+ * @max: Upper bound of checked nodes
+ *
+ * Return: 1 if tree is a valid BST
+ *         0 otherwise
+ */
+int btib_helper(const binary_tree_t *tree, int min, int max)
+{
+	if (!tree)
+		return (1);
+
+	if (tree->n < min || tree->n > max)
+		return (0);
+
+	return (btib_helper(tree->left, min, tree->n - 1) &&
+		btib_helper(tree->right, tree->n + 1, max));
+	/* -1 and +1 stem from "There must be no duplicate values" req */
 }
