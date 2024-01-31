@@ -9,13 +9,11 @@
  */
 heap_t *array_to_heap(int *array, size_t size)
 {
-	size_t i;
+	unsigned int i;
 	heap_t *root = NULL;
 
-	if (!array)
-		return (NULL);
-	root = heap_insert(&root, array[0]);
-	if (i = ; i < size; i++)
-		 heap_insert(&root, array[i]);
+	for (i = 0; i < size; i++)
+		heap_insert(&root, array[i]);
+
 	return (root);
 }
