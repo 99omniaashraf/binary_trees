@@ -1,10 +1,11 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_height - measures the height of a binary tree.
- * @tree: pointer to the root node of the tree to measure the height.
- * Return: the height.
+ * binary_tree_height - Function that measures the height of a binary tree
+ * @tree: tree to go through
+ * Return: the height
  */
+
 size_t binary_tree_height(const binary_tree_t *tree)
 {
 	size_t l = 0;
@@ -22,14 +23,14 @@ size_t binary_tree_height(const binary_tree_t *tree)
 			r = tree->right ? 1 + binary_tree_height(tree->right) : 1;
 		}
 		return ((l > r) ? l : r);
-	}
+		}
 }
 
 /**
  * bal_avl - Auxiliar function to compare each subtree if its AVL.
  * @tree: node that point to the tree to check.
+ * @high: node that point to the higher node selected
  * @lower: node that point to the lower node selected.
- * @high: node that point to the higher node selected.
  * Return: 1 if tree is AVL, 0 if not.
  */
 int bal_avl(const binary_tree_t *tree, int lower, int high)
@@ -56,9 +57,9 @@ int bal_avl(const binary_tree_t *tree, int lower, int high)
 }
 
 /**
- * binary_tree_is_avl - checks if a binary tree is a valid AVL Tree.
- * @tree: pointer to the root node of the tree to check.
- * Return: 1 if tree s AVL, 0 f not.
+ * binary_tree_is_avl - checks if a binary tree is a valid AVL tree.
+ * @tree: node that point to the tree to check.
+ * Return: 1 if tree is AVL, 0 if not.
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
